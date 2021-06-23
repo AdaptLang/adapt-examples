@@ -1,1 +1,22 @@
+/***************************************************************************************************
+ * Derived from https://github.com/AmazingMech2418/Pi-in-Many-Languages/blob/master/prolog/main.pl *
+ ***************************************************************************************************/
 
+statement a(X: float, A: float) {
+  A is (X + 1) * 2; // works like normal function where a = (x + 1) * 2, but uses logical syntax
+                    // note that the inverse is easy to use with just having the value for A instead of X
+}
+
+// You can define statements multiple times
+// If multiple definitions, any solutions for if either of them are true will be returned
+// Remember to treat variables as "superpositions" in this logical framework
+// Will be ideal for QPU addition in future tech
+statement s(X: float, S: int) {             // How this works:
+  X % 2 == 0;                               // For statement 1, X % 2 must be 0 and S must be -1. 
+  S == -1;                                  // If the first is false, the second isn't needed and S cannot be -1.
+}                                           // If the first is true, however, the second is true and -1 is a solution of S.
+                                            // 
+statement s(X: float, S: int) {             // Then it goes to statement 2.
+  X % 2 == 1;                               // For this, X % 2 must be 1 and S must be 1.
+  S == 1;                                   // Like in the first one, the second statement depends on the first
+}                                           // This is treated almost like an "else if".
