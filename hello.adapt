@@ -1,0 +1,7 @@
+#include <io.iostream>
+
+fn print(txt: str) {
+  io.iostream << txt << "\n";
+}
+
+print("Hello world!");
