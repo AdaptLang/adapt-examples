@@ -1,0 +1,17 @@
+#include <io.iostream>
+
+// Functional programming
+
+fn fibonacci(0) {
+  return 0;
+}
+
+fn fibonacci(1) {
+  return 1;
+}
+
+fn fibonacci(n: int) {
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+io.iostream << fibonacci(5) << "\n";
