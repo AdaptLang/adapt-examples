@@ -1,0 +1,32 @@
+primative twoBit[2] {
+  op["="](other: bits[2]) { // could be twoBit instaed of bits[2], but bits[2] has greater compatibility
+    this[0:1] = other[0:1];
+  }
+  
+  castFrom[int](old: int) { // 32 bits by default - note that castFrom overrides any castTo
+    this[0:1] = old[30:31]; // set to last digits
+  }
+  
+  castTo[int](): int {
+    let res: int = 0;
+    res[30:31] = this[0:1];
+    return res;
+  }
+  
+  op["="](other: bits[2]) { // automatic casting
+    this[0:1] = other[30:31]; // could also be `(twoBit)other`, using normal casting
+  }
+  
+  op["+"](other: bits[2]): twoBit {
+    let res: twoBit = 0b00;
+    res[0] = this[0] xor other[0];
+    const carry: bit = this[0] and other[0];
+    res[1] = this[1] xor other[1] xor carry;
+    
+    return res;
+  }
+  
+  castTo[str](): str {
+    return (str)(int)this; // chained casting
+  }
+}
