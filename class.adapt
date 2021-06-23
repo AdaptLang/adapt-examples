@@ -1,0 +1,17 @@
+#include <io.iostream>
+
+class Test {
+  priv test: int;
+  
+  pub constructor(a: int) {
+    this.test = a;
+  }
+  
+  pub getTest(): int {
+    return this.test;
+  }
+}
+
+const test: Test = new Test(3);
+
+io.iostream << test.getTest() << "\n";
