@@ -1,4 +1,4 @@
-primative twoBit[2] {
+primitive twoBit[2] {
   op["="](other: bits[2]) { // could be twoBit instaed of bits[2], but bits[2] has greater compatibility
     this[0:1] = other[0:1];
   }
